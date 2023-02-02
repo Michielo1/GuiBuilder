@@ -1,0 +1,8 @@
+main: me.Michielo.CustomGUI.main.CustomGUI
+name: GuiBuilder
+version: 1.1
+author: Michielo
+api-version: 1.13
+
+commands:
+  GuiBuilder:

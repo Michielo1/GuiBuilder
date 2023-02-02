@@ -1,0 +1,131 @@
+##############
+# GuiBuilder #
+##############
+
+# Basic introduction #
+
+# The GuiBuilder allows you to make an infinite amount of GUI's.
+# Every GUI starts with a name that has to be listed in the GUIlist.
+# Every GUI requires a name and at least 1 item.
+# Every item in a GUI requires an item material, name and function.
+
+# To create an item follow the structure:
+# row1: <- the row the item is on
+#   1: <- the place the item is in on row 1 (from 1 to 9)
+#     item: "Diamond" <- the item material
+#     name: "&aExample" <- the name of the item
+#     lore1: "&aLore line 1" <- Gives the item a lore
+#     lore2: "&bLine 2" <- The second lore line
+#     function:
+#       type: "placeholder" <- the type of the item
+# 
+# Note that only spaces are used. Without the proper structure the GuiBuilder will not be able to read the GUI
+
+
+
+# There are multiple functions an item can have.
+
+# - placeholder
+#   Does not need any other information, cannot be taken out of the inventory
+
+# - connect
+#   Will send the player to a different server if the server is connected by bungeecord.
+#   Requires "connect" and the server name as the value.
+#   Note that the server name must be the same as in the bungeecord config file.
+
+# - command
+#   Will execute a command.
+#   Requires a command_executor. Values that can be used are "player" and "console".
+#   Requires the command that has to be executed.
+#
+# - link
+#   Will create a link players can press.
+#   Requires a hover_text that will be the message sent to the player.
+#   Requires a link that opens when the player presses on the message. 
+#
+# - internal
+#   This will do something that is build-in with the GuiBuilder plugin
+#   Requires a internal_function.
+#   Possible values are:
+#     "close" | When pressed the GUI the player is in will be closed
+#     "open GUINAME" | When pressed the player will try to open the GUI named GUINAME
+#     "clickable" | The player can take this item out of the GUI
+
+###############################################################################
+
+# This is a list of all the GUI's, please separate the GUI's by using a comma #
+GUIlist: "example,example2"
+
+example:
+  name: "&6Example GUI"
+  row1:
+    4:
+      item: "Gray_stained_glass_pane"
+      name: "&aBungeecord example"
+      lore1: "&lLine 1 example"
+      lore2: "&c&lLine 2 example"
+      function:
+        type: "connect"
+        connect: "smp"
+  row2:
+    3:
+      item: "green_bed"
+      name: "player command example"
+      lore1: "&lLore example"
+      function:
+        type: "command"
+        command_executor: "player"
+        command: "spawn"
+    5:
+      item: "blue_bed"
+      name: "console command example"
+      lore1: "&lLore example"
+      lore2: "&lLine 2 lore"
+      function:
+        type: "command"
+        command_executor: "console"
+        command: "say This is an example command"
+  row3:
+    8:
+      item: "green_bed"
+      name: "player command example"
+      lore1: "&lLore example"
+      function:
+        type: "command"
+        command_executor: "player"
+        command: "spawn"
+  row4:
+    3:
+      item: "green_bed"
+      name: "player command example"
+      lore1: "&lLore example"
+      function:
+        type: "command"
+        command_executor: "player"
+        command: "spawn"
+  row5:
+    9:
+      item: "green_bed"
+      name: "player command example"
+      lore1: "&lLore example"
+      function:
+        type: "placeholder"
+  row6:
+    1:
+      item: "green_bed"
+      name: "link example"
+      lore1: "&lLore example"
+      function:
+        type: "link"
+        hover_text: "&a&lClick here for a link!"
+        link: "https://www.michielo.com"
+        
+example2:
+  name: "Example GUI 2!"
+  row1:
+    1:
+      item: "Diamond"
+      name: "Example"
+      function:
+        type: "internal"
+        internal_function: "open example"
